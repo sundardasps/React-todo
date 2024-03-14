@@ -33,19 +33,15 @@ function TodoComp() {
   };
 
   return (
-    <div className="container mx-auto bg-blue-gray-100 ">
-      <div className="h-screen p-1">
-        <div className="flex justify-between">
-          <Card className="rounded-l-none  shadow-md border border-gray-700  bg-transparent w-20 h-11 p-1 ">
-            <Typography variant="h6">Today</Typography>
-            <p className="text-xs">13/3/2024</p>
-          </Card>
+    <div className="container mx-auto border scrollable ">
+      <div className="h-screen p-1 ">
+        <div className="flex">
           <TodoInput />
         </div>
 
         <div className="p-6 flex gap-2">
-          <Card className="w-80  h-max  rounded-none cursor-pointer">
-            <div className="rounded-none  shadow-none mt-0 bg-blue-gray-300 h-16 ">
+          <Card className="w-80  h-max  rounded-md cursor-pointer border shadow-md shadow-blue-gray-300">
+            <div className="rounded-none  shadow-none mt-0 bg-blue-gray-800 h-16 ">
               <div className="absolute top-1  rounded-full border-1 border-blue-gray-200 w-3 h-3 bg-blue-gray-100  m-2"></div>
               <Typography color="white" className=" ml-7 px-3 pt-1">
                 Need to learn data sructure algoritum
@@ -60,7 +56,7 @@ function TodoComp() {
           </Card>
         </div>
       </div>
-      <div className="flex justify-center">
+      {/* <div className="flex justify-center">
         <ButtonGroup variant="outlined">
           <IconButton onClick={prev}>
             <ArrowLeftIcon strokeWidth={2} className="h-4 w-4" />
@@ -74,7 +70,7 @@ function TodoComp() {
             <ArrowRightIcon strokeWidth={2} className="h-4 w-4" />
           </IconButton>
         </ButtonGroup>
-      </div>
+      </div> */}
     </div>
   );
 }

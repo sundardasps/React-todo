@@ -49,3 +49,12 @@ export async function resendOtp(email){
       console.log(error.message); 
    }
 }
+
+export async function createTodo(values){
+   try {
+      const result = await userApi.post("/createTodo",values)
+      return result
+   } catch (error) {
+      console.log(error.message); 
+   }
+}

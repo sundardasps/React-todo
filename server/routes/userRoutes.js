@@ -1,6 +1,7 @@
 import express from "express";
 import userDb from '../model/userModel.js'
 import { userSignUp ,userVarification,resendOTP,userLogin, googleRegister} from "../controllers/authController.js";
+import { createTodo } from "../controllers/userController.js";
 const userRoutes = express()
 
 userRoutes.post('/login',userLogin)
@@ -10,6 +11,10 @@ userRoutes.post('/googleSignUp',googleRegister)
 
 userRoutes.get('/otpVarify/:otp/:email',userVarification)
 userRoutes.get('/resendOtp/:email',resendOTP)
+
+
+
+userRoutes.post('/createTodo',createTodo)
     
 
 
