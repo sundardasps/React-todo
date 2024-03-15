@@ -17,15 +17,17 @@ import { useFormik } from "formik";
 import { todoSchema } from "../../utils/yupValidation";
 import { Toaster, toast } from "react-hot-toast";
 import { createTodo } from "../../api/userApi";
+import { useQueryClient } from "@tanstack/react-query";
+
 
 
 export function TodoInput() {
   const [open, setOpen] = React.useState(false);
   const [longTerm, setLongTerm] = React.useState(false);
   const openDrawer = () => setOpen(true);
-  const closeDrawer = () => setOpen(false);
+  const closeDrawer = () => {setOpen(false),resetForm()};
   const openDate = () => setLongTerm(true);
-
+  const queryClint = useQueryClient()
 
   const initialValues = {
     title:"",
@@ -34,7 +36,7 @@ export function TodoInput() {
     date:"",
   }
 
-  const {handleChange,errors,handleSubmit,values,setFieldValue} = useFormik({
+  const {handleChange,errors,handleSubmit,values,setFieldValue,resetForm} = useFormik({
     initialValues:initialValues,
     validationSchema:todoSchema,
     onSubmit:async (values)=>{
@@ -44,15 +46,26 @@ export function TodoInput() {
             }
         }
          const response = await createTodo(values)
+         if(response.data.todoCreated){
+
+          toast.success(response.data.message)
+          queryClint.invalidateQueries('todoList')
+          closeDrawer()
+         }else{
+          toast.error(response.data.message)
+  
+         }
         
     },
   })
+
+  
 
   return (
     <React.Fragment>
       <Button
         onClick={openDrawer}
-        className="flex  rounded-l-none border text-white bg-blue-gray-300 w-28 cursor-pointer  shadow-md p-3 "
+        className="flex items-center rounded-none border text-white bg-blue-gray-300 w-28 cursor-pointer shadow-md p-3"
       >
         <PencilSquareIcon className="w-5 m-auto" /> Add task
       </Button>

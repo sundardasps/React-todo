@@ -11,6 +11,7 @@ import OtpComp from "./components/authentication/OtpComp";
 import TodoPage from "./pages/TodoPage";
 import UserProtect from "./protect/UserProtect";
 import UserPublic from "./protect/UserPublic";
+import TodoDetails from "./pages/TodoDetailsPage";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route element={<UserProtect />}>
           <Route element={<Outlet />}>
             <Route path="/todo" element={<TodoPage />} />
+            <Route path="/todoDetails" element={<TodoDetails />} />
           </Route>
         </Route>
       </Routes>

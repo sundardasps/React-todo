@@ -6,7 +6,6 @@ function TodoPage() {
   return (
     <>
       <NavbarComp />
-
       <TodoComp />
     </>
   );

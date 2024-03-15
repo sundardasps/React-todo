@@ -10,11 +10,18 @@ const todoSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    status: {
-      type: String,
-      required: false,
+    type:{
+       type:String,
+       required:true
     },
-    dueDate: {
+    status: {
+      type: Boolean,
+      default: false,
+    },
+    date: {
+      type: String,
+    },
+    userId: {
       type: String,
       required: true,
     },

@@ -1,60 +1,84 @@
-import axios from 'axios'
+import { userInterseption } from "../utils/interseptor";
 
-const userApi = axios.create({
-    baseURL:'http://localhost:5000'
-})
+const userApi = userInterseption;
 
-
-export async function login(values){
-    try {
-       const result = await userApi.post('/login',values)
-       return result
-    } catch (error) {
-       console.log(error.message); 
-    }
+export async function login(values) {
+  try {
+    const result = await userApi.post("/login", values);
+    return result;
+  } catch (error) {
+    console.log(error.message);
+  }
 }
 
-export async function signup(values){
-    try {
-       const result = await userApi.post('/signup',values)
-       return result
-    } catch (error) {
-       console.log(error.message); 
-    }
+export async function signup(values) {
+  try {
+    const result = await userApi.post("/signup", values);
+    return result;
+  } catch (error) {
+    console.log(error.message);
+  }
 }
 
-export async function googleSignUp(values){
+export async function googleSignUp(values) {
+  try {
+    const result = await userApi.post("/googleSignUp", values);
+    return result;
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+export async function otpVerification(otp, email) {
+  try {
+    const result = await userApi.get(`/otpVarify/${otp}/${email}`);
+    return result;
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+export async function resendOtp(email) {
+  try {
+    const result = await userApi.get(`/resendOtp/${email}`);
+    return result;
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+export async function createTodo(values) {
+  try {
+    const result = await userApi.post("/createTodo", values);
+    return result;
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+export async function getTodoList() {
+  try {
+    const result = await userApi.get("/todoList");
+    return result;
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+export async function getTotoDetails(id) {
+  try {
+    const result = await userApi.get(`/getTodo/${id}`);
+    return result;
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+export async function deleteTodo(id) {
    try {
-      const result = await userApi.post('/googleSignUp',values)
-      return result
+     const result = await userApi.get(`/deleteTodo/${id}`);
+     return result;
    } catch (error) {
-      console.log(error.message); 
+     console.log(error.message);
    }
-}
-
-export async function otpVerification(otp,email){
-   try {
-      const result = await userApi.get(`/otpVarify/${otp}/${email}`)
-      return result
-   } catch (error) {
-      console.log(error.message); 
-   }
-}
-
-export async function resendOtp(email){
-   try {
-      const result = await userApi.get(`/resendOtp/${email}`)
-      return result
-   } catch (error) {
-      console.log(error.message); 
-   }
-}
-
-export async function createTodo(values){
-   try {
-      const result = await userApi.post("/createTodo",values)
-      return result
-   } catch (error) {
-      console.log(error.message); 
-   }
-}
+ }
