@@ -82,3 +82,12 @@ export async function deleteTodo(id) {
      console.log(error.message);
    }
  }
+
+ export async function editTodo(values) {
+  try {
+    const result = await userApi.put("/editTodo",values);
+    return result;
+  } catch (error) {
+    console.log(error.message);
+  }
+}

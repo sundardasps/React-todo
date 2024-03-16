@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import { format } from "timeago.js";
-import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { deleteTodo, getTotoDetails } from "../../api/userApi";
 import {
@@ -8,10 +7,6 @@ import {
   Card,
   CardBody,
   CardFooter,
-  CardHeader,
-  Checkbox,
-  Input,
-  Textarea,
   Tooltip,
   Typography,
 } from "@material-tailwind/react";
@@ -40,16 +35,26 @@ function TodoDetails() {
     }
   };
 
+  // let date;
+  // if (data?.data?.date) {
+  //   const parts = data?.data?.date.split("-");
+  //   const month = parseInt(parts[0], 10);
+  //   const day = parseInt(parts[1], 10);
+  //   const year = parseInt(parts[2], 10);
+  //   date = `${day}/0${month}/${year}`;
+  // }
+
+
   return (
     <div
-      className={`container mx-auto border scrollable bg-black  ${
+      className={`container mx-auto border scrollable  ${
         (data?.data?.type === "longterm" && "bg-light-blue-100") ||
         (data?.data?.type === "daily" && "bg-amber-100") ||
         (data?.data?.type === "immediate" && "bg-deep-orange-100")
-      } `}
+      }`}
     >
       <div className="h-screen p-1 ">
-        <Card className="w-3/5 m-auto mt-5">
+        <Card className="w-3/5 m-auto mt-5 ">
           <CardBody className="flex flex-col gap-4">
             <Typography
               variant="h4"
@@ -108,7 +113,12 @@ function TodoDetails() {
                 <TrashIcon className="w-4" />
               </Button>
             </Tooltip>
-            <Button variant="gradient">Edit</Button>
+            <Button
+              variant="gradient"
+              onClick={() => navigate("/edit", { state: data?.data?._id })}
+            >
+              Edit
+            </Button>
           </CardFooter>
         </Card>
       </div>

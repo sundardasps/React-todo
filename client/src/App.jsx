@@ -12,6 +12,7 @@ import TodoPage from "./pages/TodoPage";
 import UserProtect from "./protect/UserProtect";
 import UserPublic from "./protect/UserPublic";
 import TodoDetails from "./pages/TodoDetailsPage";
+import TodoEditPage from "./pages/TodoEditPage";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route element={<Outlet />}>
             <Route path="/todo" element={<TodoPage />} />
             <Route path="/todoDetails" element={<TodoDetails />} />
+            <Route path="/edit" element={<TodoEditPage />} />
           </Route>
         </Route>
       </Routes>

@@ -63,8 +63,8 @@ export const otpValidation = (otp)=>{
 export const todoSchema = Yup.object().shape({
   title:Yup.string().required("This field is required!"),
   type:Yup.string().required("This field is required!"),
-    date:  Yup.date()
-    .min(new Date(), 'Date must be in the future'),
-  description:Yup.string().required("This field is required!")
+  date: Yup.date()
+  .min(new Date(new Date().setHours(0, 0, 0, 0)), 'Date must be today or in the future'),
+     description:Yup.string().required("This field is required!")
  
   })

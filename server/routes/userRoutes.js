@@ -1,7 +1,7 @@
 import express from "express";
 import userDb from '../model/userModel.js'
 import { userSignUp ,userVarification,resendOTP,userLogin, googleRegister} from "../controllers/authController.js";
-import { createTodo,deleteTodo,getTodoDetails,getTodoList } from "../controllers/userController.js";
+import { createTodo,deleteTodo,editTodo,getTodoDetails,getTodoList } from "../controllers/userController.js";
 import authentication from "../middleWares/authentication.js";
 const userRoutes = express()
 userRoutes.post('/login',userLogin)
@@ -15,6 +15,7 @@ userRoutes.post('/createTodo',authentication,createTodo)
 userRoutes.get('/todoList',authentication,getTodoList)
 userRoutes.get('/getTodo/:todoId',authentication,getTodoDetails)
 userRoutes.get('/deleteTodo/:todoId',authentication,deleteTodo)
+userRoutes.put('/editTodo',authentication,editTodo)
     
 
 

@@ -144,7 +144,6 @@ export const resendOTP = async (req, res) => {
 export const googleRegister = async (req, res) => {
   try {
     const { email, id, name, } = req.body;
-    console.log(email, id, name,"kkkkkkkkkk");
 
     const exist = await userDb.findOne({ email: email });
     if (exist) {
