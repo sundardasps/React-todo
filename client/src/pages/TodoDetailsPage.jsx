@@ -4,10 +4,10 @@ import  TodoDetails from '../components/todo/TodoDetails'
 
 function TodoDetailsPage() {
   return (
-    <div>
+    <>
       <NavbarComp />
       <TodoDetails/>
-    </div>
+    </>
   )
 }
 

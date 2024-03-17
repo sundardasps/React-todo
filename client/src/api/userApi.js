@@ -56,9 +56,9 @@ export async function createTodo(values) {
   }
 }
 
-export async function getTodoList() {
+export async function getTodoList(filter) {
   try {
-    const result = await userApi.get("/todoList");
+    const result = await userApi.get("/todoList",{params:{filter}});
     return result;
   } catch (error) {
     console.log(error.message);
@@ -86,6 +86,15 @@ export async function deleteTodo(id) {
  export async function editTodo(values) {
   try {
     const result = await userApi.put("/editTodo",values);
+    return result;
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+export async function addCompleted(id) {
+  try {
+    const result = await userApi.get(`/addComplete/${id}`);
     return result;
   } catch (error) {
     console.log(error.message);

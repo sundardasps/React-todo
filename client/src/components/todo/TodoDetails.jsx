@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { format } from "timeago.js";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { deleteTodo, getTotoDetails } from "../../api/userApi";
 import {
+  Breadcrumbs,
   Button,
   Card,
   CardBody,
@@ -35,16 +36,6 @@ function TodoDetails() {
     }
   };
 
-  // let date;
-  // if (data?.data?.date) {
-  //   const parts = data?.data?.date.split("-");
-  //   const month = parseInt(parts[0], 10);
-  //   const day = parseInt(parts[1], 10);
-  //   const year = parseInt(parts[2], 10);
-  //   date = `${day}/0${month}/${year}`;
-  // }
-
-
   return (
     <div
       className={`container mx-auto border scrollable  ${
@@ -54,6 +45,10 @@ function TodoDetails() {
       }`}
     >
       <div className="h-screen p-1 ">
+        <Breadcrumbs fullWidth>
+          <Link to={"/todo"}>Home</Link>
+          <a className="opacity-60">Todo details</a>
+        </Breadcrumbs>
         <Card className="w-3/5 m-auto mt-5 ">
           <CardBody className="flex flex-col gap-4">
             <Typography

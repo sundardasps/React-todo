@@ -1,7 +1,8 @@
 import { QueryClient, useQuery } from "@tanstack/react-query";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { editTodo, getTotoDetails } from "../../api/userApi";
 import {
+  Breadcrumbs,
   Button,
   Card,
   CardBody,
@@ -75,6 +76,14 @@ function TodoEdit() {
       }`}
     >
       <div className="h-screen p-1  ">
+        <Breadcrumbs fullWidth>
+          <Link to={"/todo"}>Home</Link>
+
+          <Link to={"/todoDetails"} state={values.id}>
+            Components
+          </Link>
+          <a>Edit details</a>
+        </Breadcrumbs>
         <form action="" onSubmit={handleSubmit}>
           <Card className="w-4/5 m-auto mt-5 shadow-2xl ">
             <Typography variant="h3" className="m-auto mt-3">

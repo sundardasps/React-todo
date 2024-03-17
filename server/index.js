@@ -11,7 +11,7 @@ dotenv.config();
 mongoose.connect(process.env.MONGO_SERVER);
 const options = {
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
-  origin: "http://localhost:5173",
+  origin:process.env.FRONTEND,
 };
 app.use(cors(options));
 

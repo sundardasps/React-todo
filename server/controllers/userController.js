@@ -31,7 +31,12 @@ export const createTodo = async (req, res) => {
 
 export const getTodoList = async (req, res, next) => {
   try {
-    const todoList = await todoModel.find({ userId: req.headers.userId });
+    const { filter } = req.query;
+    let query = { userId: req.headers.userId };
+    if (filter) {
+      query.type = filter;
+    }
+    const todoList = await todoModel.find(query);
     if (todoList) {
       return res.status(200).json(todoList);
     } else {
@@ -102,4 +107,20 @@ export const editTodo = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
+};
+
+//---------------------------------------------Edit todo ----------------------------------------//
+
+export const addComplete = async (req, res) => {
+  try {
+    const todo = await todoModel.findOneAndUpdate(
+      { _id: req.params.todoId },
+      { $set: { status: true } }
+    );
+    if (todo) {
+      return res.status(200).json(todo);
+    } else {
+      return res.status(403).json({ todo, message: "Network error.." });
+    }
+  } catch (error) {}
 };

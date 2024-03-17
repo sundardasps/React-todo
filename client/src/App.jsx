@@ -16,7 +16,7 @@ import TodoEditPage from "./pages/TodoEditPage";
 
 function App() {
   return (
-    <Router>
+    <Router >
       <Routes>
         <Route element={<UserPublic />}>
           <Route path="/" element={<LandingPage />} />

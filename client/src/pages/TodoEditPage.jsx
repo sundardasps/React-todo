@@ -3,10 +3,10 @@ import TodoEdit from '../components/todo/TodoEdit'
 
 function TodoEditPage() {
   return (
-    <div>
+    <>
     <NavbarComp />
     <TodoEdit/>
-  </div>
+  </>
   )
 }
 
