@@ -1,0 +1,1 @@
+This project is a React Todo application that incorporates drag and drop functionality for task management, along with user authentication. It utilizes React for the frontend, Node.js for the backend, and MongoDB for database management.
