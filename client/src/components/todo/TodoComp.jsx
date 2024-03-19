@@ -97,7 +97,7 @@ function TodoComp() {
                 {...provided.droppableProps}
               >
                 {data &&
-                  data.data.map(
+                  data?.data?.map(
                     (value, index) =>
                       !value.status && (
                         <Draggable
